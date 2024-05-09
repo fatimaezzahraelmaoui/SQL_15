@@ -1,0 +1,39 @@
+
+CREATE USER 'User1'@'localhost' IDENTIFIED BY 'Modep@sse1';
+CREATE USER 'User2'@'localhost' IDENTIFIED BY 'Modep@sse2';
+CREATE USER 'User3'@'localhost' IDENTIFIED BY 'Modep@sse3';
+CREATE USER 'User4'@'localhost' IDENTIFIED BY 'Modep@sse4';
+
+
+SELECT user FROM mysql.user WHERE host='localhost';
+
+
+GRANT SELECT ON mycompany.* TO 'User1'@'localhost';
+GRANT INSERT ON mycompany.Customers TO 'User2'@'localhost';
+GRANT INSERT ON mycompany.Employees TO 'User2'@'localhost';
+GRANT INSERT ON mycompany.Orders TO 'User2'@'localhost';
+GRANT ALL PRIVILEGES ON mycompany.* TO 'User3'@'localhost';
+GRANT UPDATE ON mycompany.Orders TO 'User4'@'localhost';
+
+
+SHOW GRANTS FOR 'User1'@'localhost';
+SHOW GRANTS FOR 'User2'@'localhost';
+SHOW GRANTS FOR 'User3'@'localhost';
+SHOW GRANTS FOR 'User4'@'localhost';
+
+
+
+mysql -u User4 -p
+
+
+
+UPDATE mycompany.Orders SET Comment = 'Votre commentaire ici' WHERE OrderID = 10100;
+
+
+
+mysql -u root -p
+
+
+
+REVOKE DELETE ON mycompany.* FROM 'User3'@'localhost';
+
